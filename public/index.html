@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Mentor AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">💻</div>
+      <div class="logo-text">
+        <span class="logo-title">Code Mentor</span>
+        <span class="logo-sub">AI</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#" class="nav-item active" data-section="dashboard">
+        <span class="nav-icon">⌂</span> Dashboard
+      </a>
+      <a href="#" class="nav-item" data-section="tutorials">
+        <span class="nav-icon">▤</span> Tutorials
+      </a>
+      <a href="#" class="nav-item" data-section="playground">
+        <span class="nav-icon">&lt;/&gt;</span> Playground
+      </a>
+      <a href="#" class="nav-item" data-section="resources">
+        <span class="nav-icon">📚</span> Resources
+      </a>
+    </nav>
+    
+    <div class="sidebar-history-container">
+      <div class="sidebar-heading">Recent Chats</div>
+      <div id="sidebarHistoryList" class="sidebar-history-list">
+        <p class="sidebar-empty">No history yet.</p>
+      </div>
+      <button id="clearHistory" class="sidebar-clear-btn">Clear History</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section active">
+
+
+      <div class="card ask-card">
+        <h2 class="card-title">❓ Ask a Coding Question</h2>
+        <div class="info-box">
+          <span class="info-icon">ℹ️</span>
+          <p><strong>How to use:</strong> Ask any coding-related question in any programming language. The AI is specialized to help with coding problems and concepts. For non-coding questions, responses may be unpredictable!</p>
+        </div>
+
+        <label class="input-label">&gt;_ Your Coding Question</label>
+        <textarea id="questionInput" class="question-input" placeholder="e.g. Explain binary search with code..."></textarea>
+
+        <button id="askBtn" class="ask-btn">
+          <span id="btnText">Ask AI</span>
+          <span id="btnLoader" class="hidden">⏳ Thinking...</span>
+        </button>
+
+        <div id="responseBox" class="response-box hidden">
+          <div class="response-header">
+            <span>🤖 AI Response</span>
+            <button class="copy-btn" id="copyBtn">Copy</button>
+          </div>
+          <div id="responseText" class="response-text markdown-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section hidden">
+      <div class="card">
+        <h2 class="card-title">📚 DSA Learning Resources</h2>
+        <div class="resources-grid">
+          <a href="https://www.geeksforgeeks.org/data-structures/" target="_blank" class="resource-card">
+            <div class="r-icon">🤓</div>
+            <h3>GeeksforGeeks</h3>
+            <p>Comprehensive DSA tutorials and interview preparation</p>
+          </a>
+          <a href="https://www.tutorialspoint.com/data_structures_algorithms/index.htm" target="_blank" class="resource-card">
+            <div class="r-icon">📖</div>
+            <h3>Tutorialspoint</h3>
+            <p>Quick reference guides and structured learning</p>
+          </a>
+          <a href="https://leetcode.com/explore/" target="_blank" class="resource-card">
+            <div class="r-icon">👨‍💻</div>
+            <h3>LeetCode</h3>
+            <p>The best platform to practice DSA problems</p>
+          </a>
+          <a href="https://www.hackerrank.com/domains/data-structures" target="_blank" class="resource-card">
+            <div class="r-icon">🏆</div>
+            <h3>HackerRank</h3>
+            <p>Skill building and competitive programming</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section id="tutorials" class="section hidden">
+      <div class="card">
+        <h2 class="card-title">▤ DSA Tutorials</h2>
+        <div class="tutorials-grid" id="tutorialsGrid">
+          <div class="tutorial-card" data-query="Explain Arrays in DSA with examples">
+            <div class="t-icon">📦</div>
+            <h3>Arrays</h3>
+            <p>Basics, traversal, and common operations</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Linked Lists in DSA with examples">
+            <div class="t-icon">🔗</div>
+            <h3>Linked Lists</h3>
+            <p>Singly, doubly, and circular linked lists</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Stack and Queue in DSA with examples">
+            <div class="t-icon">📚</div>
+            <h3>Stack & Queue</h3>
+            <p>LIFO, FIFO, and use cases</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Binary Trees and BST in DSA with examples">
+            <div class="t-icon">🌳</div>
+            <h3>Trees & BST</h3>
+            <p>Binary trees, traversals, and BST</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Graph algorithms in DSA with BFS and DFS examples">
+            <div class="t-icon">🕸️</div>
+            <h3>Graphs</h3>
+            <p>BFS, DFS, and shortest path</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Dynamic Programming in DSA with examples">
+            <div class="t-icon">⚡</div>
+            <h3>Dynamic Programming</h3>
+            <p>Memoization, tabulation, and patterns</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Sorting algorithms in DSA with examples">
+            <div class="t-icon">🔢</div>
+            <h3>Sorting Algorithms</h3>
+            <p>Bubble, merge, quick sort and more</p>
+          </div>
+          <div class="tutorial-card" data-query="Explain Recursion in DSA with examples">
+            <div class="t-icon">🔄</div>
+            <h3>Recursion</h3>
+            <p>Base cases, call stack, and examples</p>
+          </div>
+        </div>
+        <div id="tutorialReader" class="hidden">
+          <button id="backToTutorials" class="back-btn">← Back to Tutorials</button>
+          <div id="tutorialLoader" class="hidden tutorial-loader">
+            ⏳ <span>Generating your tutorial...</span>
+          </div>
+          <div id="tutorialContent" class="markdown-body response-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground" class="section hidden">
+      <div class="card">
+        <h2 class="card-title">&lt;/&gt; Playground</h2>
+        <p class="playground-desc">Write your DSA problem below and get an AI-powered solution with explanation.</p>
+        <label class="input-label">Problem Statement</label>
+        <textarea id="playgroundInput" class="question-input" placeholder="Paste a LeetCode problem or describe your DSA challenge..."></textarea>
+        <div class="playground-options">
+          <select id="langSelect" class="lang-select">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="C++">C++</option>
+          </select>
+          <button id="playgroundBtn" class="ask-btn">
+            <span id="pgBtnText">Solve It</span>
+            <span id="pgBtnLoader" class="hidden">⏳ Thinking...</span>
+          </button>
+        </div>
+        <div id="playgroundResponse" class="response-box hidden">
+          <div class="response-header">
+            <span>🤖 Solution</span>
+            <button class="copy-btn" id="copyPlayground">Copy</button>
+          </div>
+          <div id="playgroundText" class="response-text markdown-body"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
